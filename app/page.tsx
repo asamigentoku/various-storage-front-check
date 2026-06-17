@@ -3,7 +3,10 @@ import { login, logout } from "./actions";
 
 export default async function Page() {
   const cookieStore = await cookies();
-  const sessionId = cookieStore.get("session_id");
+  // A deleted cookie can still come back as { name, value: "" } within the
+  // same response, so check the value itself rather than the object's
+  // truthiness.
+  const sessionValue = cookieStore.get("session_id")?.value;
 
   return (
     <div className="flex flex-col flex-1 items-center justify-center gap-6 bg-zinc-50 font-sans dark:bg-black">
@@ -11,14 +14,21 @@ export default async function Page() {
         <h1 className="text-2xl font-semibold text-black dark:text-zinc-50">
           Cookie Sample
         </h1>
+        <p className="rounded-lg bg-zinc-100 p-3 text-sm text-zinc-600 dark:bg-zinc-900 dark:text-zinc-400">
+          <strong className="text-zinc-800 dark:text-zinc-200">
+            Use this when:
+          </strong>{" "}
+          the server needs to read the data on every request (auth/session
+          tokens), or it must be sent automatically with each HTTP request.
+        </p>
 
-        {sessionId ? (
+        {sessionValue ? (
           <>
             <p className="text-zinc-600 dark:text-zinc-400">
               Logged in. <code>session_id</code> cookie value:
             </p>
             <code className="break-all rounded-lg bg-zinc-100 p-3 text-sm text-zinc-800 dark:bg-zinc-900 dark:text-zinc-200">
-              {sessionId.value}
+              {sessionValue}
             </code>
             <form action={logout}>
               <button

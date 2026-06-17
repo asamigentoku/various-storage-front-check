@@ -7,6 +7,13 @@ export default function Page() {
         <h1 className="text-2xl font-semibold text-black dark:text-zinc-50">
           OPFS Sample
         </h1>
+        <p className="rounded-lg bg-zinc-100 p-3 text-sm text-zinc-600 dark:bg-zinc-900 dark:text-zinc-400">
+          <strong className="text-zinc-800 dark:text-zinc-200">
+            Use this when:
+          </strong>{" "}
+          you need fast, file-like storage in the browser, e.g. running
+          SQLite via WASM or processing large files from a Web Worker.
+        </p>
         <OpfsDemo />
       </main>
     </div>

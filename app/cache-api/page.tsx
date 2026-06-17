@@ -7,6 +7,13 @@ export default function Page() {
         <h1 className="text-2xl font-semibold text-black dark:text-zinc-50">
           Cache API Sample
         </h1>
+        <p className="rounded-lg bg-zinc-100 p-3 text-sm text-zinc-600 dark:bg-zinc-900 dark:text-zinc-400">
+          <strong className="text-zinc-800 dark:text-zinc-200">
+            Use this when:
+          </strong>{" "}
+          you want to cache network requests/responses for offline support
+          or performance, typically alongside a Service Worker.
+        </p>
         <CacheApiDemo />
       </main>
     </div>

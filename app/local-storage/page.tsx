@@ -7,6 +7,14 @@ export default function Page() {
         <h1 className="text-2xl font-semibold text-black dark:text-zinc-50">
           localStorage Sample
         </h1>
+        <p className="rounded-lg bg-zinc-100 p-3 text-sm text-zinc-600 dark:bg-zinc-900 dark:text-zinc-400">
+          <strong className="text-zinc-800 dark:text-zinc-200">
+            Use this when:
+          </strong>{" "}
+          you need simple key-value data that persists across reloads, tabs,
+          and browser restarts until explicitly cleared, e.g. theme or UI
+          preferences.
+        </p>
         <LocalStorageDemo />
       </main>
     </div>
