@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,7 +28,47 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <nav className="flex flex-wrap justify-center gap-6 border-b border-black/[.08] bg-white py-4 text-sm font-medium dark:border-white/[.145] dark:bg-black">
+          <Link
+            href="/"
+            className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
+          >
+            Cookies
+          </Link>
+          <Link
+            href="/local-storage"
+            className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
+          >
+            localStorage
+          </Link>
+          <Link
+            href="/session-storage"
+            className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
+          >
+            sessionStorage
+          </Link>
+          <Link
+            href="/indexed-db"
+            className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
+          >
+            IndexedDB
+          </Link>
+          <Link
+            href="/cache-api"
+            className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
+          >
+            Cache API
+          </Link>
+          <Link
+            href="/opfs"
+            className="text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-zinc-50"
+          >
+            OPFS
+          </Link>
+        </nav>
+        {children}
+      </body>
     </html>
   );
 }
